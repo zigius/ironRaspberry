@@ -7,7 +7,8 @@ track_dir = '/home/pi/tracks/'
 id_to_path = {
     1: track_dir + "conor.mp3",
     2: track_dir + "SwordArt.mp3",
-    3: track_dir + "landslide.mp3"
+    3: track_dir + "landslide.mp3",
+    4: track_dir + "bigpoppa.mp3"
 }
 
 def get_path(id):
@@ -15,6 +16,8 @@ def get_path(id):
 
 def play_track(id):
     track_path = get_path(id)
+    if track_path is None:
+      return
     player = OMXPlayer(track_path)
     player.play()
     sleep(20)

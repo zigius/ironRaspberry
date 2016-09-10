@@ -38,9 +38,7 @@ def get_pin():
         for i in range(4):
           if GPIO.input(ROW[i]) == 0:
             if MATRIX[i][j] == ESCAPE_CHAR:
-
-              print pin_buf
-              return ''.join(pin_buf)
+                return ''.join(pin_buf)
 
             if operation_expired(run_time, started):
               print "operation expired. input registered as new string"
@@ -64,6 +62,8 @@ if __name__ == "__main__":
   try:
     while(True):
       user_id = get_pin()
+      if user_id == '':
+        continue
       print type(user_id)
       print user_id
       user_id_int = int(user_id)
